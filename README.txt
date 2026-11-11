@@ -1,31 +1,27 @@
-MYMATHTUTOR — STARTER PLATFORM
+MYMATHTUTOR — GEMINI AI VERZE
 
 Obsah:
-- index.html: kompletní responzivní web v češtině
-- netlify/functions/tutor.js: bezpečné připojení OpenAI API přes server
+- index.html: web MyMathTutor
+- netlify/functions/tutor.js: bezpečné serverové připojení Google Gemini API
 - netlify.toml: konfigurace Netlify Functions
 
 NASAZENÍ:
-1. Rozbal ZIP.
-2. Nahraj složku projektu do GitHubu a připoj repozitář v Netlify (doporučeno), nebo nahraj složku přes Netlify Drop.
-3. DŮLEŽITÉ: Netlify Drop může fungovat pro statickou část, ale pro serverovou funkci je spolehlivější nasazení přes Git/Netlify CLI. Po deploy ověř /.netlify/functions/tutor.
-4. V Netlify → Site configuration → Environment variables přidej:
-   OPENAI_API_KEY = tvůj soukromý API klíč
-5. Spusť nový deploy.
+1. Nahraj obsah této složky do svého Netlify projektu (ne samotný ZIP jako soubor na web).
+2. V Google AI Studio vytvoř API klíč: https://aistudio.google.com/app/apikey
+3. V Netlify otevři Project configuration → Environment variables.
+4. Přidej proměnnou GEMINI_API_KEY a jako hodnotu vlož svůj Google AI Studio klíč.
+5. Ulož a spusť nový deploy.
+6. Otevři web a vyzkoušej AI tutora.
 
-CO JE FUNKČNÍ I BEZ API:
+DŮLEŽITÉ:
+- API klíč nikdy nevkládej do index.html ani do veřejného GitHubu.
+- Bezplatný tarif Gemini má limity a podmínky se mohou měnit. U bezplatného tarifu může Google používat odeslaný obsah ke zlepšování produktů; neposílej citlivé osobní údaje.
+- Pokud se zobrazí chyba 429, byl pravděpodobně dosažen limit požadavků; zkus to později.
+- Pokud se zobrazí chyba 403/404, zkontroluj platnost klíče a dostupnost modelu pro svůj účet.
+
+FUNKCE BEZ AI:
 - navigace, akademie a filtrování kapitol
 - YouTube vyhledávání videí podle tématu
-- lokální ukázkový kvíz s vysvětlením
+- lokální kvíz s vysvětlením
 - poslech přes hlas prohlížeče
 - hra na vlastní vysvětlení tématu
-
-CO VYŽADUJE API / DALŠÍ SLUŽBU:
-- skutečné generativní AI odpovědi
-- individuální kvízy generované AI
-- scénáře výukových videí na míru
-- automatické vytvoření hotového video souboru vyžaduje samostatnou video službu
-
-NÁKLADY:
-Web samotný a vestavěné lokální funkce lze používat zdarma. OpenAI API se platí zvlášť podle spotřeby; API není automaticky součástí ChatGPT tarifu. YouTube videa jsou externí obsah a jejich dostupnost určuje YouTube.
-Bezpečnost: API klíč nikdy nevkládej do HTML/JavaScriptu v prohlížeči ani do veřejného GitHub repozitáře.
