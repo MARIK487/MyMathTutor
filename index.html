@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MyMathTutor — Learn anything</title>
+<meta name="description" content="MyMathTutor — matematika, fyzika, akademie, videa a chytré procvičování.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090d18;--panel:#101829;--panel2:#141f33;--line:#26334a;--text:#f2f5fb;--muted:#9ba9c0;--blue:#77a7ff;--cyan:#65e0d1;--violet:#b49aff;--yellow:#ffd477;--red:#ff8c9a;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 80% -10%,#182b50 0%,transparent 65%),var(--bg);color:var(--text);font-family:'DM Sans',sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}
+.top{height:76px;border-bottom:1px solid #ffffff12;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;position:sticky;top:0;background:#090d18dd;backdrop-filter:blur(18px);z-index:10}
+.brand{display:flex;gap:11px;align-items:center;font:800 19px Manrope}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#78aaff,#6be1d2);display:grid;place-items:center;color:#09111d;font-weight:900;font-size:20px}
+.nav{display:flex;gap:5px}.nav button,.ghost{border:0;background:transparent;color:var(--muted);padding:10px 13px;border-radius:10px}.nav button.active,.nav button:hover{background:#ffffff10;color:white}.topright{display:flex;align-items:center;gap:10px}.pill{border:1px solid #33516a;background:#122638;color:#8ce7d8;border-radius:99px;padding:7px 11px;font-size:12px}
+main{max-width:1200px;margin:auto;padding:34px 24px 80px}.view{display:none}.view.active{display:block}.hero{padding:48px 0 34px;display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:center}.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:2px;font-weight:700;text-transform:uppercase}.hero h1{font:800 clamp(36px,5vw,64px)/1.06 Manrope;margin:15px 0}.grad{background:linear-gradient(90deg,#8bb4ff,#78e2d3 70%);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:650px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.btn{border:1px solid var(--line);background:#18243a;color:white;padding:12px 17px;border-radius:12px;font-weight:700}.btn.primary{background:linear-gradient(110deg,#77a7ff,#68d9d0);color:#08111d;border:0}.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}.hero-card{border:1px solid #31425e;background:linear-gradient(145deg,#16243a,#101829);border-radius:24px;padding:24px;box-shadow:0 22px 80px #0005}.orbit{height:190px;display:grid;place-items:center;position:relative}.orb{width:135px;height:135px;border:1px solid #79b4ff88;border-radius:50%;display:grid;place-items:center;font:800 46px Manrope;color:#8ab7ff;box-shadow:0 0 55px #4b8bff2b,inset 0 0 35px #4b8bff20}.float{position:absolute;border:1px solid #ffffff20;background:#1a2b43;padding:9px 12px;border-radius:12px;font-size:13px}.f1{top:12px;left:4px}.f2{right:0;top:48px}.f3{bottom:12px;left:32px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#ffffff08;border-radius:13px;padding:12px}.stat b{display:block;font:800 19px Manrope}.stat span{font-size:11px;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:26px 0 16px;gap:15px}.section-head h2{font:800 25px Manrope;margin:0}.section-head p{margin:5px 0 0;color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:linear-gradient(145deg,#121d30,#0f1727);border:1px solid var(--line);border-radius:var(--radius);padding:19px}.card:hover{border-color:#5776a5}.iconbox{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:21px;background:#223958;margin-bottom:15px}.card h3{font:700 17px Manrope;margin:0 0 7px}.card p{color:var(--muted);font-size:13px;line-height:1.55;margin:0}.card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:17px;color:#9eb6d7;font-size:12px}.linkbtn{background:none;border:0;color:#8db6ff;font-weight:700;padding:0}
+.searchbar{display:flex;gap:10px;margin:18px 0}.field{width:100%;background:#0b1322;border:1px solid #30415d;border-radius:12px;padding:13px 14px;color:white;outline:none}.field:focus{border-color:#79aaff}.field::placeholder{color:#65758e}textarea.field{resize:vertical;min-height:110px;line-height:1.55}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 20px}.chip{border:1px solid var(--line);color:var(--muted);background:#111b2b;border-radius:99px;padding:8px 12px;font-size:12px}.chip.active{background:#1c3554;color:#a9caff;border-color:#4b75ad}
+.two{display:grid;grid-template-columns:1fr 300px;gap:16px}.stack{display:grid;gap:12px}.lesson{display:flex;gap:14px;align-items:flex-start}.lesson .iconbox{flex-shrink:0;margin:0}.lesson small{color:var(--muted)}.lesson h3{margin:2px 0 5px}.lesson .linkbtn{margin-top:8px}
+.chatbox{min-height:300px;max-height:440px;overflow:auto;padding:16px;background:#0b1322;border:1px solid var(--line);border-radius:15px;margin:12px 0}.bubble{max-width:90%;padding:12px 14px;border-radius:14px;margin:9px 0;line-height:1.6;font-size:14px;white-space:pre-wrap}.bubble.bot{background:#192943;border:1px solid #2d4667}.bubble.user{background:#244b69;margin-left:auto}.composer{display:flex;gap:9px}.composer textarea{min-height:52px;max-height:120px}
+.optiongrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.option{background:#121d30;border:1px solid var(--line);border-radius:15px;padding:16px;text-align:left;color:white}.option.selected{border-color:var(--cyan);background:#15313a}.option b{display:block;margin:8px 0 4px}.option small{color:var(--muted)}
+.quizq{font-size:19px;font-weight:700;line-height:1.5;margin:14px 0}.answer{display:block;width:100%;text-align:left;padding:13px;border:1px solid var(--line);background:#111b2b;color:white;border-radius:11px;margin:8px 0}.answer:hover{border-color:#77a7ff}.answer.correct{border-color:var(--cyan);background:#15352f}.answer.wrong{border-color:var(--red);background:#3b202a}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.video-card{overflow:hidden;padding:0}.thumb{height:130px;background:linear-gradient(135deg,#1e3d62,#17283d);display:grid;place-items:center;font-size:38px}.video-card .inside{padding:15px}
+.note{color:var(--muted);font-size:12px;line-height:1.6}.tag{font-size:11px;color:#9bded6;background:#16343a;padding:5px 8px;border-radius:7px;display:inline-block;margin-bottom:9px}
+footer{border-top:1px solid #ffffff12;color:#72819a;padding:25px 5vw;text-align:center;font-size:12px;margin-top:50px}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.grid,.video-grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.optiongrid{grid-template-columns:repeat(2,1fr)}.nav{overflow:auto}.nav button{white-space:nowrap}}
+@media(max-width:600px){.top{padding:0 14px}.nav{display:none}main{padding:20px 14px 50px}.hero{padding:30px 0}.grid,.video-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.section-head{align-items:start;flex-direction:column}.optiongrid{grid-template-columns:1fr 1fr}}
+</style></head>
+<body>
+<header class="top">
+ <div class="brand"><div class="logo">∑</div>MyMathTutor</div>
+ <nav class="nav">
+  <button class="active" data-view="home">Domů</button><button data-view="academy">Akademie</button><button data-view="videos">Videa</button><button data-view="train">Trénink</button><button data-view="tutor">AI tutor</button>
+ </nav>
+ <div class="topright"><span class="pill">✦ STUDY SPACE</span></div>
+</header>
+<main>
+<section class="view active" id="home">
+ <div class="hero">
+  <div><div class="eyebrow">Tvoje osobní studijní laboratoř</div><h1>Nauč se <span class="grad">cokoliv.</span><br>Opravdu do hloubky.</h1>
+   <p>Od prvních rovnic až po kvantovou fyziku, od základů kalkulu po pokročilou analýzu. Vysvětlení, lekce, videa a trénink na jednom místě.</p>
+   <div class="actions"><button class="btn primary" onclick="showView('academy')">Prozkoumat akademii ↗</button><button class="btn" onclick="showView('tutor')">Zeptat se tutora ✦</button></div>
+  </div>
+  <div class="hero-card"><div class="orbit"><div class="orb">∫</div><span class="float f1">∑ Matematika</span><span class="float f2">⚛ Fyzika</span><span class="float f3">∞ Bez limitů</span></div>
+   <div class="stats"><div class="stat"><b>∞</b><span>Možnosti učení</span></div><div class="stat"><b>4</b><span>Tréninkové režimy</span></div><div class="stat"><b>24/7</b><span>Studijní prostor</span></div></div>
+  </div>
+ </div>
+ <div class="section-head"><div><h2>Vyber si svou cestu</h2><p>Začni tam, kde právě jsi.</p></div></div>
+ <div class="grid">
+  <article class="card" onclick="showView('academy')"><div class="iconbox">∑</div><h3>Akademie matematiky</h3><p>Algebra, geometrie, kalkulus, lineární algebra, analýza, pravděpodobnost a další.</p><div class="card-foot">Prozkoumat kapitoly <span>↗</span></div></article>
+  <article class="card" onclick="showView('academy');setFilter('physics')"><div class="iconbox">⚛</div><h3>Akademie fyziky</h3><p>Mechanika, elektřina, termodynamika, relativita, kvantová fyzika a moderní věda.</p><div class="card-foot">Prozkoumat kapitoly <span>↗</span></div></article>
+  <article class="card" onclick="showView('train')"><div class="iconbox">♟</div><h3>Chytrý trénink</h3><p>Kvízy, poslech, mini hry a procvičování přesně toho, co se chceš naučit.</p><div class="card-foot">Začít trénovat <span>↗</span></div></article>
+ </div>
+ <div class="section-head"><div><h2>Rychlý start</h2><p>Oblíbená témata, se kterými můžeš začít hned.</p></div></div>
+ <div class="grid" id="quickTopics"></div>
+</section>
+
+<section class="view" id="academy">
+ <div class="section-head"><div><div class="eyebrow">Knihovna znalostí</div><h2>Akademie</h2><p>Učivo rozdělené od základů po pokročilé kapitoly.</p></div></div>
+ <div class="searchbar"><input class="field" id="topicSearch" placeholder="Hledat kapitolu, např. integrály, kvantová fyzika…" oninput="renderTopics()"></div>
+ <div class="chips"><button class="chip active" onclick="setFilter('all',this)">Vše</button><button class="chip" onclick="setFilter('math',this)">Matematika</button><button class="chip" onclick="setFilter('physics',this)">Fyzika</button><button class="chip" onclick="setFilter('advanced',this)">Pokročilé</button></div>
+ <div class="grid" id="topicGrid"></div>
+</section>
+
+<section class="view" id="videos">
+ <div class="section-head"><div><div class="eyebrow">Vizuální učení</div><h2>Video knihovna</h2><p>Najdi si výklad tématu. Odkazy vedou na relevantní vyhledávání na YouTube.</p></div></div>
+ <div class="searchbar"><input class="field" id="videoSearch" placeholder="Co chceš vidět?" oninput="renderVideos()"></div>
+ <div class="video-grid" id="videoGrid"></div>
+ <div class="card" style="margin-top:16px"><span class="tag">TVORBA VLASTNÍ LEKCE</span><h3>Chceš video na míru?</h3><p>Napiš téma. Tutor připraví scénář, osnovu, příklady a návrh scén pro výukové video. Automatické vyrenderování hotového videa vyžaduje samostatnou video službu.</p><div class="actions"><button class="btn primary" onclick="showView('tutor');document.getElementById('question').value='Vytvoř mi scénář výukového videa na téma: '">Vytvořit scénář s tutorem</button></div></div>
+</section>
+
+<section class="view" id="train">
+ <div class="section-head"><div><div class="eyebrow">Procvičování na míru</div><h2>Tréninkové studio</h2><p>Napiš téma a vyber způsob, jak se ho chceš naučit.</p></div></div>
+ <div class="card">
+  <label class="note" for="trainTopic">CO SE CHCEŠ NAUČIT?</label><input class="field" id="trainTopic" placeholder="Např. derivace, Newtonovy zákony, komplexní čísla…">
+  <div class="section-head"><div><h3>Vyber režim</h3><p>Každý režim procvičuje jiným způsobem.</p></div></div>
+  <div class="optiongrid" id="modeGrid">
+   <button class="option selected" data-mode="quiz"><div>🧠</div><b>Kvíz</b><small>Otázky a okamžitá zpětná vazba</small></button>
+   <button class="option" data-mode="listen"><div>🎧</div><b>Poslech</b><small>Vysvětlení, které můžeš poslouchat</small></button>
+   <button class="option" data-mode="game"><div>🎮</div><b>Hra</b><small>Rychlé úkoly a body</small></button>
+   <button class="option" data-mode="chat"><div>💬</div><b>Chat s AI</b><small>Osobní tutor a otázky</small></button>
+  </div>
+  <div class="actions"><button class="btn primary" onclick="startTraining()">Spustit trénink ↗</button></div>
+ </div>
+ <div id="trainingArea" style="margin-top:16px"></div>
+</section>
+
+<section class="view" id="tutor">
+ <div class="section-head"><div><div class="eyebrow">Tvůj osobní průvodce</div><h2>AI matematický & vědecký tutor</h2><p>Ptej se na cokoliv — od jednoduchého příkladu po vysokoškolskou teorii.</p></div><span class="pill">OPENAI API READY</span></div>
+ <div class="two"><div class="card">
+  <div class="chips"><button class="chip active" onclick="promptExample('Vysvětli mi integrály od úplných základů až po substituci.')">Integrály</button><button class="chip" onclick="promptExample('Vysvětli mi speciální teorii relativity.')">Relativita</button><button class="chip" onclick="promptExample('Nauč mě řešit diferenciální rovnice.')">Dif. rovnice</button><button class="chip" onclick="promptExample('Vysvětli Schrödingerovu rovnici.')">Kvantová fyzika</button></div>
+  <div class="chatbox" id="chat"><div class="bubble bot">Ahoj! Jsem tutor MyMathTutor. 😊\n\nNapiš, co se chceš naučit. Můžu vysvětlovat od úplných základů, řešit příklady krok za krokem nebo připravit osnovu výukového videa.</div></div>
+  <div class="composer"><textarea class="field" id="question" placeholder="Napiš otázku nebo příklad… (Enter odešle, Shift+Enter nový řádek)" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendQuestion()}"></textarea><button class="btn primary" onclick="sendQuestion()">Odeslat ↗</button></div>
+  <p class="note">AI může udělat chybu. U náročných výpočtů kontroluj předpoklady a výsledek.</p>
+ </div>
+ <aside class="stack"><div class="card"><div class="iconbox">✦</div><h3>Jak se ptát</h3><p>„Vysvětli mi to jako začátečníkovi.“<br><br>„Ukaž rigorózní důkaz.“<br><br>„Vymysli 5 těžkých příkladů.“<br><br>„Vytvoř scénář videa na 8 minut.“</p></div>
+ <div class="card"><h3>Stav připojení</h3><p id="apiStatus">Připraveno k připojení. Pro skutečné AI odpovědi nastav na Netlify proměnnou OPENAI_API_KEY.</p></div></aside></div>
+</section>
+</main>
+<footer>MyMathTutor · Uč se svým tempem · Vytvořeno pro zvídavé mysli</footer>
+<script>
+const topics=[
+{n:"Algebra a rovnice",d:"Výrazy, rovnice, nerovnice, soustavy a polynomy.",c:"math",l:"Základy",i:"∑"},
+{n:"Funkce a grafy",d:"Lineární, kvadratické, exponenciální a logaritmické funkce.",c:"math",l:"Základy",i:"⌁"},
+{n:"Geometrie a trigonometrie",d:"Trojúhelníky, kružnice, vektory, sinus a kosinus.",c:"math",l:"Střední škola",i:"△"},
+{n:"Limity a spojitost",d:"Limity posloupností a funkcí, spojitost a asymptoty.",c:"math",l:"Kalkulus",i:"→"},
+{n:"Derivace",d:"Derivační pravidla, řetězové pravidlo, extrémy a aplikace.",c:"math",l:"Kalkulus",i:"d/dx"},
+{n:"Integrální počet",d:"Primitivní funkce, substituce, per partes a určitý integrál.",c:"math",l:"Kalkulus",i:"∫"},
+{n:"Lineární algebra",d:"Matice, determinanty, vektorové prostory a vlastní čísla.",c:"advanced",l:"VŠ",i:"▦"},
+{n:"Matematická analýza",d:"Řady, konvergence, metrické prostory a rigorózní důkazy.",c:"advanced",l:"VŠ",i:"ε"},
+{n:"Diferenciální rovnice",d:"ODE, systémy, Laplaceova transformace a PDE.",c:"advanced",l:"Pokročilé",i:"y′"},
+{n:"Pravděpodobnost a statistika",d:"Náhodné veličiny, rozdělení, odhady a testování.",c:"math",l:"Střední/VŠ",i:"σ"},
+{n:"Klasická mechanika",d:"Pohyb, síly, energie, hybnost a rotace.",c:"physics",l:"Základy",i:"⚙"},
+{n:"Elektřina a magnetismus",d:"Pole, obvody, indukce a Maxwellovy rovnice.",c:"physics",l:"Střední/VŠ",i:"ϟ"},
+{n:"Termodynamika",d:"Teplo, práce, entropie a termodynamické zákony.",c:"physics",l:"Střední/VŠ",i:"♨"},
+{n:"Vlnění a optika",d:"Vlny, interference, difrakce, čočky a světlo.",c:"physics",l:"Střední škola",i:"〰"},
+{n:"Speciální relativita",d:"Prostorčas, Lorentzovy transformace a E=mc².",c:"advanced",l:"Pokročilé",i:"⏱"},
+{n:"Kvantová mechanika",d:"Vlnová funkce, operátory, měření a Schrödingerova rovnice.",c:"advanced",l:"Pokročilé",i:"⚛"},
+{n:"Astrofyzika a kosmologie",d:"Hvězdy, černé díry, rozpínání vesmíru a kosmologie.",c:"physics",l:"Pokročilé",i:"✦"},
+{n:"Relativistická kvantová pole",d:"Kvantová pole, symetrie, částice a Feynmanovy diagramy.",c:"advanced",l:"Expert",i:"◇"}
+];
+let filter="all",selectedMode="quiz",quizIndex=0,quizScore=0;
+function showView(id){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='academy')renderTopics();if(id==='videos')renderVideos()}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+function topicCard(t){return `<article class="card"><div class="iconbox">${t.i}</div><span class="tag">${t.l}</span><h3>${t.n}</h3><p>${t.d}</p><div class="card-foot"><button class="linkbtn" onclick="openTopic('${t.n.replace(/'/g,"\\'")}')">Otevřít kapitolu ↗</button><span>›</span></div></article>`}
+function renderTopics(){let q=(document.getElementById('topicSearch')?.value||'').toLowerCase();let list=topics.filter(t=>(filter==='all'||t.c===filter||(filter==='math'&&t.c==='advanced'))&&(t.n+' '+t.d+' '+t.l).toLowerCase().includes(q));document.getElementById('topicGrid').innerHTML=list.map(topicCard).join('')||'<p class="note">Nic jsme nenašli.</p>'}
+function setFilter(f,el){filter=f;document.querySelectorAll('#academy .chip').forEach(x=>x.classList.remove('active'));if(el)el.classList.add('active');else document.querySelectorAll('#academy .chip')[0].classList.toggle('active',f==='all');renderTopics()}
+function openTopic(n){showView('tutor');document.getElementById('question').value=`Nauč mě téma ${n} od základů až po pokročilé souvislosti. Rozděl výklad na kapitoly a přidej příklady.`}
+function promptExample(s){document.getElementById('question').value=s}
+function renderVideos(){let q=(document.getElementById('videoSearch')?.value||'').toLowerCase();let list=topics.filter(t=>(t.n+' '+t.d).toLowerCase().includes(q)).slice(0,12);document.getElementById('videoGrid').innerHTML=list.map(t=>`<article class="card video-card"><div class="thumb">${t.i} ▶</div><div class="inside"><span class="tag">${t.l}</span><h3>${t.n}</h3><p>${t.d}</p><div class="card-foot"><a class="linkbtn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(t.n+' výklad česky')}" >Najít videa na YouTube ↗</a></div></div></article>`).join('')}
+function addBubble(text,who){let d=document.createElement('div');d.className='bubble '+who;d.textContent=text;let c=document.getElementById('chat');c.appendChild(d);c.scrollTop=c.scrollHeight;return d}
+async function sendQuestion(){let el=document.getElementById('question'),q=el.value.trim();if(!q)return;addBubble(q,'user');el.value='';let pending=addBubble('Přemýšlím…','bot');try{let r=await fetch('/.netlify/functions/tutor',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q})});let data=await r.json();if(!r.ok)throw new Error(data.error||'AI není dostupná');pending.textContent=data.answer||'Bez odpovědi.'}catch(e){pending.textContent='AI zatím není připojená: '+e.message+'\n\nMůžeš připravit otázku, ale pro skutečnou odpověď je potřeba nasadit projekt na Netlify a nastavit OPENAI_API_KEY.'}}
+document.querySelectorAll('.option').forEach(b=>b.onclick=()=>{document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');selectedMode=b.dataset.mode});
+function startTraining(){let topic=document.getElementById('trainTopic').value.trim()||'základy kalkulu';let a=document.getElementById('trainingArea');if(selectedMode==='chat'){showView('tutor');document.getElementById('question').value=`Procvičuj se mnou téma ${topic}. Ptej se mě postupně a vyhodnocuj mé odpovědi.`;return}
+if(selectedMode==='listen'){a.innerHTML=`<div class="card"><h3>🎧 Poslech: ${topic}</h3><p>Vlož nebo vytvoř výklad a nech si ho přečíst hlasem prohlížeče.</p><textarea class="field" id="listenText">V této lekci se naučíme téma ${topic}. Začneme definicí, ukážeme si jednoduchý příklad a potom přejdeme k náročnějším úlohám.</textarea><div class="actions"><button class="btn primary" onclick="speakText()">▶ Přehrát</button><button class="btn" onclick="speechSynthesis.cancel()">■ Zastavit</button><button class="btn" onclick="showView('tutor');document.getElementById('question').value='Připrav srozumitelný mluvený výklad na téma ${topic}.'">Vytvořit delší výklad s AI</button></div><p class="note">Používá hlas dostupný v tvém prohlížeči.</p></div>`}
+else if(selectedMode==='quiz'){quizIndex=0;quizScore=0;renderQuiz(topic)}
+else{a.innerHTML=`<div class="card"><span class="tag">RYCHLÁ HRA</span><h3>🎮 Výzva: ${topic}</h3><p>Dokážeš vysvětlit dané téma ve třech větách? Pak si nech odpověď zkontrolovat tutorem.</p><textarea class="field" id="gameAnswer" placeholder="Napiš své vysvětlení…"></textarea><div class="actions"><button class="btn primary" onclick="showView('tutor');document.getElementById('question').value='Zkontroluj moje vysvětlení tématu ${topic}, ohodnoť ho a doplň mezery: '+document.getElementById('gameAnswer').value">Zkontrolovat s AI ↗</button></div></div>`}}
+function speakText(){let t=document.getElementById('listenText').value;if(!('speechSynthesis'in window)){alert('Tento prohlížeč nepodporuje čtení textu.');return}speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='cs-CZ';speechSynthesis.speak(u)}
+const quizBank=[
+{q:'Jaká je derivace funkce f(x)=x²?',a:['2x','x','x³/3','2'],c:0,e:'Použijeme mocninné pravidlo: (xⁿ)′ = n·xⁿ⁻¹, tedy 2x.'},
+{q:'Kolik je určitý integrál ∫₀¹ 2x dx?',a:['0','1','2','1/2'],c:1,e:'Primitivní funkce je x². Po dosazení: 1² − 0² = 1.'},
+{q:'Jak zní druhý Newtonův zákon?',a:['E=mc²','F=ma','p=mv²','U=RI'],c:1,e:'Výsledná síla je součin hmotnosti a zrychlení: F = ma.'},
+{q:'Jaká je limita sin(x)/x pro x→0?',a:['0','∞','1','Neexistuje'],c:2,e:'Jde o základní limitu: lim sin(x)/x = 1 (v radiánech).'},
+{q:'Jaká je jednotka elektrického náboje?',a:['Volt','Ampér','Ohm','Coulomb'],c:3,e:'Elektrický náboj měříme v coulombech (C).'}
+];
+function renderQuiz(topic){let q=quizBank[quizIndex%quizBank.length];let a=document.getElementById('trainingArea');a.innerHTML=`<div class="card"><span class="tag">🧠 KVÍZ · ${topic}</span><div class="card-foot">Otázka ${quizIndex+1} z 5 <b>Skóre: ${quizScore}</b></div><div class="quizq">${q.q}</div><div id="answers">${q.a.map((x,i)=>`<button class="answer" onclick="answerQuiz(${i},'${topic.replace(/'/g,"\\'")}')">${String.fromCharCode(65+i)}. ${x}</button>`).join('')}</div><div id="explain" class="note"></div><div class="actions"><button class="btn primary" id="nextQ" style="display:none" onclick="nextQuiz('${topic.replace(/'/g,"\\'")}')">Další otázka →</button></div></div>`}
+function answerQuiz(i,topic){let q=quizBank[quizIndex%quizBank.length];document.querySelectorAll('.answer').forEach((b,j)=>{b.disabled=true;if(j===q.c)b.classList.add('correct');if(j===i&&i!==q.c)b.classList.add('wrong')});if(i===q.c)quizScore++;document.getElementById('explain').textContent=(i===q.c?'Správně! ':'Ještě ne. ')+q.e;document.getElementById('nextQ').style.display='inline-block'}
+function nextQuiz(topic){quizIndex++;if(quizIndex>=5){document.getElementById('trainingArea').innerHTML=`<div class="card"><h3>Hotovo! 🎉</h3><p>Tvoje skóre: ${quizScore}/5</p><button class="btn primary" onclick="startTraining()">Zkusit znovu</button></div>`}else renderQuiz(topic)}
+document.getElementById('quickTopics').innerHTML=topics.slice(3,6).map(topicCard).join('');
+renderTopics();renderVideos();
+</script></body></html>
